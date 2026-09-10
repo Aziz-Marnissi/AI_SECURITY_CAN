@@ -19,22 +19,7 @@ End-of-studies project exploring the full TinyML deployment pipeline — from sy
 
 ## 1. 🏗️ System Architecture
 
-```
-┌──────────────────┐     ┌───────────────────────┐     ┌──────────────────┐
-│  CAN Bus Traffic  │ --> │  Feature Extraction     │ --> │  TFLite Micro     │
-│  (simulated        │     │  (value, interval,       │     │  MLP Classifier    │
-│   dataset)           │     │   id, delta,               │     │  on ESP32            │
-│                        │     │   repeat_count)              │     │                        │
-└──────────────────┘     └───────────────────────┘     └──────────────────┘
-                                                                    │
-                                                                    v
-                                                        ┌──────────────────────┐
-                                                        │   5-class prediction    │
-                                                        │  Normal / Spike /         │
-                                                        │  Flooding / Replay /       │
-                                                        │  Spoofed_ID                  │
-                                                        └──────────────────────┘
-```
+![System Architecture](plots/system_architecture.png)
 
 🧩 **Pipeline stages:**
 1. 🧪 **Data generation** — synthetic CAN bus traffic simulating normal operation and 4 attack types
