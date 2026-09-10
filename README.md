@@ -138,15 +138,28 @@ Host-side numbers above are **proxies only** (desktop TFLite interpreter with XN
 ## 6. Plots Explained
 
 ### `plots/plot_loss.png` and `plots/plot_accuracy.png`
+
+![Loss curve](plots/plot_loss.png)
+![Accuracy curve](plots/plot_accuracy.png)
+
 Training curves over 80 epochs (baseline model), with early stopping. Train and validation curves track closely together with no divergence — confirms the model is **not overfitting**. Both converge within ~5-10 epochs; remaining epochs show minor fluctuation, not real improvement.
 
 ### `plots/plot_confusion_matrix.png`
+
+![Confusion matrix](plots/plot_confusion_matrix.png)
+
 Row = true class, column = predicted class. Diagonal = correct predictions. The only notable off-diagonal cluster is **13 Replay samples misclassified as Normal** — expected, because a replayed message (a real value repeated) is statistically indistinguishable from a normal reading unless the model specifically learns the `repeat_count` feature pattern. All other classes (Spike, Flooding, Spoofed_ID) are classified with zero confusion.
 
 ### `plots/plot_roc.png`
+
+![ROC curves](plots/plot_roc.png)
+
 One-vs-rest ROC curves per class. All classes achieve AUC ≥ 0.994 — Replay is the weakest (0.994) matching the confusion matrix finding, all others reach 1.000 or near-1.000.
 
 ### `plots/compare_baseline_vs_structural.png`
+
+![Baseline vs structural pruned comparison](plots/compare_baseline_vs_structural.png)
+
 Four-panel comparison (host-side estimates): model size, estimated RAM, host CPU latency, and accuracy for baseline vs. structural pruned+quantized. This is the **host proxy** version — see Section 5 for the real, ground-truth ESP32 numbers.
 
 ---
