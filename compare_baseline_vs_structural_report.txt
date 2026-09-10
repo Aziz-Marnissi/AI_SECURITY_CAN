@@ -1,0 +1,15 @@
+SecureAI_IDS: Baseline vs Structural Pruned+Quantized
+=======================================================
+
+Baseline (fp32, 16-8)
+  Size (flash):   3.21 KB
+  RAM estimate:   1.23 KB
+  Latency:        0.0026 +/- 0.0018 ms
+  Accuracy:       99.00%
+
+Structural pruned +quantized (int8, 8-4)
+  Size (flash):   3.01 KB
+  RAM estimate:   0.18 KB
+  Latency:        0.0024 +/- 0.0007 ms
+  Accuracy:       98.62%
+

@@ -1,0 +1,16 @@
+SecureAI_IDS: Baseline vs Pruned+Quantized comparison
+=======================================================
+
+Baseline (fp32, unpruned)
+  Size (flash):  3.21 KB
+  RAM estimate:  1.23 KB
+  Latency:       0.0153 ± 0.1043 ms (host CPU)
+
+Pruned + Quantized (int8)
+  Size (flash):  3.41 KB
+  RAM estimate:  0.39 KB
+  Latency:       0.0089 ± 0.0145 ms (host CPU)
+
+Pruned weight sparsity: 53.8% (128/277 nonzero)
+
+Note: latency measured on host CPU (proxy only). Actual ESP32 inference time/RAM must be measured on-device via esp-tflite-micro (use tflite_micro benchmark or log micros() around interpreter.Invoke()).
